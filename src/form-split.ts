@@ -14,7 +14,7 @@ import {
   clusterAddressesElement,
   splitAddressElement,
   clusterIsSuperClusterElement,
-  clusterRowClusterType,
+  wrapperContractTypeRowElement,
 } from './elements';
 import './gnosis-owners';
 
@@ -79,8 +79,8 @@ const handleSubmitSplit = (event) => {
 clusterFormSplitElement.addEventListener('submit', handleSubmitSplit);
 clusterIsSuperClusterElement.addEventListener('change', () => {
   if (clusterIsSuperClusterElement.checked) {
-    clusterRowClusterType.classList.remove('form-row-hidden');
+    wrapperContractTypeRowElement.classList.remove('form-row-hidden');
   } else {
-    clusterRowClusterType.classList.add('form-row-hidden');
+    wrapperContractTypeRowElement.classList.add('form-row-hidden');
   }
 });

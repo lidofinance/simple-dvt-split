@@ -21,8 +21,7 @@ export const contracts = {
   },
 };
 
-export const treasuryShareByProvider = {
-  obol: 285714,
-  ssvWithoutFee: 250000,
-  ssvWithFee: 285714,
+export const treasuryShareByType = {
+  wrapperWithoutFee: 250000,
+  wrapperWithFee: 285714,
 };
