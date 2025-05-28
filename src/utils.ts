@@ -1,8 +1,8 @@
 import { BrowserProvider, Eip1193Provider, JsonRpcSigner, isAddress } from 'ethers';
 import { modal } from './modal';
-import { contracts, treasuryShareByProvider } from './constants';
+import { contracts, treasuryShareByType } from './constants';
 import { Contract } from 'ethers';
-import { superClusterTypeElement } from './elements';
+import { wrapperContractTypeElement } from './elements';
 
 export const distributeEvenly = (total: number, participants: number): number[] => {
   if (participants <= 0) {
@@ -27,10 +27,10 @@ export const calcDistributionForRegularCluster = (accounts: string[], totalShare
 };
 
 export const calcDistributionForSuperCluster = (accounts: string[], totalShares: number, chainId: number) => {
-  const splitType = superClusterTypeElement.value;
-  validateSplitType(splitType, chainId);
+  const wrapperContractType = wrapperContractTypeElement.value;
+  validateWrapperContractType(wrapperContractType);
 
-  const treasuryShare = treasuryShareByProvider[splitType];
+  const treasuryShare = treasuryShareByType[wrapperContractType];
   const treasuryAddress = contracts.treasury[chainId];
   validateAddress(treasuryAddress);
 
@@ -111,6 +111,14 @@ export const validateSplitType = (splitType: string, chainId: number) => {
 
   if (!allowedTypes.has(splitType)) {
     throw new Error(`unknown split type "${splitType}"`);
+  }
+};
+
+export const validateWrapperContractType = (wrapperContractType: string) => {
+  const allowedTypes = new Set(Object.keys(treasuryShareByType));
+
+  if (!allowedTypes.has(wrapperContractType)) {
+    throw new Error(`unknown wrapper contract type "${wrapperContractType}"`);
   }
 };
 

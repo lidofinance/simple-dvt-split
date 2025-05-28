@@ -32,7 +32,7 @@ flowchart LR;
 
 The UI allows deploying 2 contracts from factories:
 
-**Split Сontract**. A contract that distributes rewards to participants. It uses the 0xSplit factory [0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE](https://etherscan.io/address/0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE) for contract deployment.
+**Split Contract**. A contract that distributes rewards to participants. It uses the 0xSplit factory [0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE](https://etherscan.io/address/0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE) for contract deployment.
 
 **Wrapper Contract**. The contract that is specified as the `rewardAddress` of a node operator. Wraps `stETH` rewards to `wstETH` and sends it to the split contract.
 
